@@ -2,9 +2,10 @@
 
 const btnPartida = document.getElementById("btn-partida");
 const btnBorrar = document.getElementById("btn-borrar");
-const nomJugadorObj = document.getElementById("nom-jugador");
+const nomJugadorObj = document.getElementById("nom-jugador"); //Casella del nom(fer .value per agafar lo de dins)
 const infoNavegadorObj = document.getElementById("info-navegador");
 const infoUrlObj = document.getElementById("info-url");
+const infoJugadorObj = document.getElementById("info-jugador");
 
 //DECLARAR EVENTS
 
@@ -18,8 +19,9 @@ let win
 
 function comencarPartida(){
     if(nomJugadorObj.value){
-        
+        document.cookie = nomJugadorObj.value;         
         win = window.open("joc.html");
+        localStorage.setItem("nom", "javi")
     }
     else{
         alert("Has d'informar un nom");
