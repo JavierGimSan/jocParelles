@@ -22,7 +22,8 @@ function comencarPartida(){
     if(nomJugadorObj.value){
         document.cookie = nomJugadorObj.value;         
         win = window.open("joc.html");
-        localStorage.setItem("nom", "javi")
+        //infoJugadorObj.value = "Nom: " + nomJugadorObj.value + punts +" ESTAT PARTIDA: En joc" FALTA: ENLLAÇAR PUNTS.
+        //localStorage.setItem("nom", "javi")
     }
     else{
         alert("Has d'informar un nom");

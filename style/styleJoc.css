@@ -26,7 +26,7 @@ body{
 #quadrats-container{
     display: flex;
     flex-wrap: wrap;
-    margin-left: 32.5%;
+    margin-left: 34%;
     margin-right: 32.5%;
 }
 
@@ -34,6 +34,7 @@ body{
     width: 100px;
     height: 100px;
     background-color: blue;
+    color: blue;
     border-radius: 10px;
     margin-left: 5px;
     margin-right: 5px;
@@ -41,4 +42,5 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
