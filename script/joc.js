@@ -4,6 +4,7 @@ const containerQuadrats = document.getElementById("quadrats-container");
 const puntsPartidaObj = document.getElementById("punts-partida");
 const numPuntsObj = document.getElementById("num-punts"); //Puntuació de la partida.
 const bodyObj = document.getElementById("body");
+const puntuacioMesAlta = document.getElementById("info-puntuacio-mes-alta");
 
 //DECLARAR VARIABLES I CONSTANTS
 const NUMCASELLES = 20;
@@ -28,7 +29,7 @@ if(navigator.userAgent.includes(nomNavegador)){
 }
 
 //ORDRE ALEATORI PER A L'ARRAY LLETRES:
-//lletres = lletres.sort(function(){return Math.random() -0.5}); //Funció que he trobat que, al restar 0.5 a Math.random(), retorna un num positiu, 0 o un num negatiu. Si és negatiu, l'element de l'array retrocedirà 1, si és 0 es quedarà igual i si és positiu avançarà.
+lletres = lletres.sort(function(){return Math.random() -0.5}); //Funció que he trobat que, al restar 0.5 a Math.random(), retorna un num positiu, 0 o un num negatiu. Si és negatiu, l'element de l'array retrocedirà 1, si és 0 es quedarà igual i si és positiu avançarà.
 
 //BUCLE PER CREAR LES CASELLES DEL JOC
 for(i=0; i<NUMCASELLES; i++){
