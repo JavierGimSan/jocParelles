@@ -22,13 +22,13 @@ botoInstruccions.addEventListener('click', mostrarInstruccions);
 
 //COLOR DE FONS DEPENENT DEL NAVEGADOR:
 if(navigator.userAgent.includes(nomNavegador)){
-    bodyObj.style.backgroundColor = 'green';
+    bodyObj.style.backgroundColor = "rgb(180, 237, 180)";
 }else {
     bodyObj.style.backgroundColor = 'orange';
 }
 
 //ORDRE ALEATORI PER A L'ARRAY LLETRES:
-lletres = lletres.sort(function(){return Math.random() -0.5});
+//lletres = lletres.sort(function(){return Math.random() -0.5}); //Funció que he trobat que, al restar 0.5 a Math.random(), retorna un num positiu, 0 o un num negatiu. Si és negatiu, l'element de l'array retrocedirà 1, si és 0 es quedarà igual i si és positiu avançarà.
 
 //BUCLE PER CREAR LES CASELLES DEL JOC
 for(i=0; i<NUMCASELLES; i++){
@@ -44,14 +44,17 @@ function comprovarParella(){ //Si son iguals, es posen verd. Si no, vermelles du
     parella.push(this.textContent); //Amb 'this' selecciono l'element clicat.
     quadratsSeleccionats.push(this);
     this.style.color = 'white';
-    console.log(parella);
+    //console.log(parella);
     this.style.pointerEvents = 'none'; //He trobat aquesta propietat amb la que, quan una casella està clicada, no es pugui tornar a clicar.
     if(parella.length == 2){ //Quan hem seleccionat el segon element...
         if(parella[0] == parella[1]){
             numPuntsObj.textContent = parseInt(numPuntsObj.textContent) + 10; //SUMA 10 PUNTS SI ES CORRECTE
-            console.log(numPuntsObj.textContent);
-            lletresJugades.push(parella);
-            console.log('lletres' + lletresJugades);
+            //console.log(numPuntsObj.textContent);
+            lletresJugades.push(parella[0]);
+            lletresJugades.push(parella[1]);
+            partidaFinalitzada();
+            console.log(lletresJugades);
+            //console.log('lletres' + lletresJugades);
             for(i=0; i<parella.length; i++){ //Bucle per canviar el color de les caselles si son iguals.
                 quadratsSeleccionats[i].style.backgroundColor = 'green';
             }
@@ -74,6 +77,14 @@ function comprovarParella(){ //Si son iguals, es posen verd. Si no, vermelles du
                 quadratsSeleccionats = [];
             }, 300);                       
         }        
+    }
+}
+
+
+
+function partidaFinalitzada(){
+    if(lletres.length == lletresJugades.length){
+        window.location.replace("http://127.0.0.1:5500/JocParelles/partidaFinalitzada.html");       
     }
 }
 
