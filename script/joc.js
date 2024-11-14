@@ -3,12 +3,13 @@ const nomObj = document.getElementById("nom-partida");
 const containerQuadrats = document.getElementById("quadrats-container");
 const puntsPartidaObj = document.getElementById("punts-partida");
 const numPuntsObj = document.getElementById("num-punts"); //Puntuació de la partida.
-
+const bodyObj = document.getElementById("body");
 
 //DECLARAR VARIABLES I CONSTANTS
 const NUMCASELLES = 20;
 const nomStorage = document.cookie;
 nomObj.textContent = nomStorage;
+const nomNavegador = 'Chrome';
 let lletres = ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'D', 'E', 'E', 'F', 'F', 'G', 'G', 'H', 'H', 'I', 'I', 'J', 'J'];
 let lletresJugades = [];
 let parella = [];
@@ -18,6 +19,16 @@ let winInstr;
 //DECLARAR EVENTS
 const botoInstruccions = document.getElementById("btn-instruccions");
 botoInstruccions.addEventListener('click', mostrarInstruccions);
+
+//COLOR DE FONS DEPENENT DEL NAVEGADOR:
+if(navigator.userAgent.includes(nomNavegador)){
+    bodyObj.style.backgroundColor = 'green';
+}else {
+    bodyObj.style.backgroundColor = 'orange';
+}
+
+//ORDRE ALEATORI PER A L'ARRAY LLETRES:
+lletres = lletres.sort(function(){return Math.random() -0.5});
 
 //BUCLE PER CREAR LES CASELLES DEL JOC
 for(i=0; i<NUMCASELLES; i++){
@@ -61,7 +72,7 @@ function comprovarParella(){ //Si son iguals, es posen verd. Si no, vermelles du
                 quadratsSeleccionats[1].style.color = 'blue';
                 parella = [];
                 quadratsSeleccionats = [];
-            }, 1000);                       
+            }, 300);                       
         }        
     }
 }
@@ -69,3 +80,4 @@ function comprovarParella(){ //Si son iguals, es posen verd. Si no, vermelles du
 function mostrarInstruccions(){
     window.open('instruccions.html', '_blank', 'width=400, height=400');
 }
+
