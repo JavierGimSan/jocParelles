@@ -6,7 +6,7 @@ const nomJugadorObj = document.getElementById("nom-jugador"); //Casella del nom(
 const infoNavegadorObj = document.getElementById("info-navegador");
 const infoUrlObj = document.getElementById("info-url");
 const infoJugadorObj = document.getElementById("info-jugador");
-const broadcastChannel = new BroadcastChannel("my_channel"); //CONSTANT PER ENVIAR INFO EN TEMPS REAL.
+
 
 //DECLARAR EVENTS
 
@@ -46,4 +46,4 @@ function infoURL(){
 }
 
 informacioNavegador();
-infoURL();
+infoURL();  

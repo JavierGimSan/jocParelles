@@ -21,6 +21,11 @@ let winInstr;
 const botoInstruccions = document.getElementById("btn-instruccions");
 botoInstruccions.addEventListener('click', mostrarInstruccions);
 
+//INICIALITZAR ELS PUNTS MÉS ALTS
+if(localStorage.getItem("puntuacioMesAlta")){
+    puntuacioMesAlta.textContent = localStorage.getItem("puntuacioMesAlta");
+}
+
 //COLOR DE FONS DEPENENT DEL NAVEGADOR:
 if(navigator.userAgent.includes(nomNavegador)){
     bodyObj.style.backgroundColor = "rgb(180, 237, 180)";
@@ -28,8 +33,12 @@ if(navigator.userAgent.includes(nomNavegador)){
     bodyObj.style.backgroundColor = 'orange';
 }
 
+//ESTABLIR LA PUNTUACIÓ MÉS ALTA:
+if(parseInt(numPuntsObj.textContent) > 0){
+
+}
 //ORDRE ALEATORI PER A L'ARRAY LLETRES:
-lletres = lletres.sort(function(){return Math.random() -0.5}); //Funció que he trobat que, al restar 0.5 a Math.random(), retorna un num positiu, 0 o un num negatiu. Si és negatiu, l'element de l'array retrocedirà 1, si és 0 es quedarà igual i si és positiu avançarà.
+//lletres = lletres.sort(function(){return Math.random() -0.5}); //Funció que he trobat que, al restar 0.5 a Math.random(), retorna un num positiu, 0 o un num negatiu. Si és negatiu, l'element de l'array retrocedirà 1, si és 0 es quedarà igual i si és positiu avançarà.
 
 //BUCLE PER CREAR LES CASELLES DEL JOC
 for(i=0; i<NUMCASELLES; i++){
@@ -85,11 +94,18 @@ function comprovarParella(){ //Si son iguals, es posen verd. Si no, vermelles du
 
 function partidaFinalitzada(){
     if(lletres.length == lletresJugades.length){
-        window.location.replace("http://127.0.0.1:5500/JocParelles/partidaFinalitzada.html");       
-    }
+        localStorage.setItem("puntuacioActual", parseInt(numPuntsObj.textContent));
+        let puntuacioActualStorage = parseInt(localStorage.getItem("puntuacioActual"));
+        if(puntuacioMesAlta.textContent == "Sense dades" || parseInt(puntuacioMesAlta.textContent) < puntuacioActualStorage){
+            localStorage.setItem("puntuacioMesAlta", puntuacioActualStorage);      
+        }
+        window.location.replace("http://127.0.0.1:5500/JocParelles/partidaFinalitzada.html");
+    }       
 }
 
 function mostrarInstruccions(){
     window.open('instruccions.html', '_blank', 'width=400, height=400');
 }
+
+
 
